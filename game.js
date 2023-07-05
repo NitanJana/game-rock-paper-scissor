@@ -52,22 +52,39 @@ function playRound(playerSelection, computerSelection) {
 
   /* output */
 
-  // return winner;
-
+  
   if (winner === 'player') {
-    return (`You Won! ${playerSelection} beats ${computerSelection}.`);
+    console.log(`You Won this round! ${playerSelection} beats ${computerSelection}.`);
   } else if (winner === 'computer') {
-      return (`You Lose! ${computerSelection} beats ${playerSelection}.`);
+      console.log(`You Lose this round! ${computerSelection} beats ${playerSelection}.`);
   } else if (winner === 'nobody') {
-      return (`You Drew! ${playerSelection} does not beat ${computerSelection}.`);
+      console.log(`You Drew this round! ${playerSelection} does not beat ${computerSelection}.`);
   } else {
-      return ("choose proper option between rock, paper and scissor");
+      console.log("choose proper option between rock, paper and scissor");
     }
+  
+  return winner;
+}
+
+function game(MAX_ROUND_NUMBER) {
+  for (let i = 0; i < MAX_ROUND_NUMBER; i++) {
+    const playerSelection = prompt("Choose rock/paper/scissor");
+    console.log(`You chose ${playerSelection}`);
+    const computerSelection = getComputerChoice();
+    console.log(`Computer chose ${computerSelection}`);
+
+    let roundWinner = playRound(playerSelection, computerSelection);
+    if (roundWinner === 'player') {
+      score++;
+    }
+  }
+
+  console.log(`Your score is: ${score}`);
+
 }
 
 
-const playerSelection = "Scissor";
+let score = 0;
+const MAX_ROUND_NUMBER = 5;
 
-const computerSelection = getComputerChoice();
-
-console.log(playRound(playerSelection, computerSelection));
+game(MAX_ROUND_NUMBER);
