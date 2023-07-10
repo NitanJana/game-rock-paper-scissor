@@ -4,19 +4,23 @@
   box-sizing: border-box;
 }
 
-html,body {
-  font-family: 'Courier New', Courier, monospace;
+html,
+body {
+  font-family: "Courier New", Courier, monospace;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;
   font-size: 1.1rem;
 }
 
 div.main {
+  text-align: center;
   display: flex;
   flex-direction: column;
   height: 50vh;
+  width: 100vw;
   justify-content: space-between;
   align-items: center;
 }
@@ -39,15 +43,45 @@ div#outputText {
 
 div#outputText p#result {
   font-size: 2rem;
+  margin-bottom: 1rem;
 }
 div#outputText p#reason {
   font-size: 1.2rem;
 }
-
 
 div.score {
   display: flex;
   gap: 5rem;
 }
 
+div.score p {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
 
+div.score p span {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 480px) {
+  html,
+  body {
+    align-items: flex-start;
+  }
+  div.main {
+    justify-content: space-around;
+    height: 100vh;
+  }
+  .button {
+    width: 5rem;
+  }
+  div#outputText p#result {
+    font-size: 1.5rem;
+  }
+  div#outputText p#reason {
+    font-size: 1rem;
+  }
+}
