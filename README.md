@@ -1,3 +1,4 @@
-# Rock Paper Scissor Game
-
-A basic rock paper scissor game created in javascript.
+# ✊ ✋ ✌️ Rock Paper Scissor
+## Links
+- Live View: [Netlify](https://nitan-rock-paper-scissor.netlify.app/) / [Github Pages](https://nitanjana.github.io/game-rock-paper-scissor/)
+- Project Repository: [Github](https://github.com/NitanJana/game-rock-paper-scissor)
