@@ -4,17 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissor</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="game.js" defer></script>
   </head>
   <body>
-    <div class="buttons">
-      <button id="rock">Rock</button>
-      <button id="paper">Paper</button>
-      <button id="scissor">Scissor</button>
-    </div>
+    <div class="main">
+      <h1>Rock Paper Scissor</h1>
+      
+      <div id="outputText">
+        <p id="result">Let's Play!</p>
+        <p id="reason"></p>
+      </div>
 
-    <div id="outputText">Let's Play!</div>
-    <p>Your Score: <span id="playerScore">0</span></p>
-    <p>Computer Score: <span id="computerScore">0</span></p>
+      <div class="buttons">
+        <button class="button" id="rock">Rock</button>
+        <button class="button" id="paper">Paper</button>
+        <button class="button" id="scissor">Scissor</button>
+      </div>
+      
+      <div class="score">
+        <p>Your Score: <span id="playerScore">0</span></p>
+        <p>Computer Score: <span id="computerScore">0</span></p>
+      </div>
+    </div>
   </body>
 </html>

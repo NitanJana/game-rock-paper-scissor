@@ -15,23 +15,51 @@ function getComputerChoice() {
   }
 }
 
+function checkWin(winnerScore, winner,result,reason) {
+  if (winnerScore > 4) {
+    document.querySelector('.buttons').remove();
+    const retryButton = document.createElement('button');
+    retryButton.textContent = 'Retry';
+    retryButton.classList.add("button");
+    retryButton.setAttribute("onClick","window.location.reload();")
+    
+    const mainDiv = document.querySelector(".main");
+    mainDiv.insertBefore(retryButton,document.querySelector('.score'));
+    
+    result.textContent = `${winner} won ${winnerScore} rounds!!!`;
+    reason.textContent = "";
+
+  }
+}
+
 function outputVisual(winner,playerSelection, computerSelection) {
-  const outputDiv = document.querySelector('#outputText');
+  const result = document.querySelector('#result');
+  const reason = document.querySelector('#reason');
+
   const playerScoreSpan = document.querySelector('#playerScore');
   const computerScoreSpan = document.querySelector('#computerScore');
 
   if (winner === 'player') {
     playerScore++;
     playerScoreSpan.textContent = playerScore;
-    outputDiv.textContent = `You Won this round! ${playerSelection} beats ${computerSelection}.`;
+
+    result.textContent = `You Won this round!`;
+    reason.textContent = `${playerSelection} beats ${computerSelection}.`;
+
+    checkWin(playerScore, winner,result,reason);
   } else if (winner === 'computer') {
     computerScore++;
     computerScoreSpan.textContent = computerScore;
-      outputDiv.textContent = `You Lose this round! ${computerSelection} beats ${playerSelection}.`;
+
+    result.textContent = `You Lose this round!`;
+    reason.textContent = `${computerSelection} beats ${playerSelection}.`;
+
+    checkWin(computerScore, winner,result,reason);
   } else if (winner === 'nobody') {
-      outputDiv.textContent = `You Drew this round! ${playerSelection} does not beat ${computerSelection}.`;
+      result.textContent = `You Drew this round!`;
+      reason.textContent = `${playerSelection} does not beat ${computerSelection}.`;
   } else {
-      outputDiv.textContent = "choose proper option between rock, paper and scissor";
+      result.textContent = "choose proper option between rock, paper and scissor";
     }
 }
 
