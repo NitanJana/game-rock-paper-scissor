@@ -15,6 +15,26 @@ function getComputerChoice() {
   }
 }
 
+function outputVisual(winner,playerSelection, computerSelection) {
+  const outputDiv = document.querySelector('#outputText');
+  const playerScoreSpan = document.querySelector('#playerScore');
+  const computerScoreSpan = document.querySelector('#computerScore');
+
+  if (winner === 'player') {
+    playerScore++;
+    playerScoreSpan.textContent = playerScore;
+    outputDiv.textContent = `You Won this round! ${playerSelection} beats ${computerSelection}.`;
+  } else if (winner === 'computer') {
+    computerScore++;
+    computerScoreSpan.textContent = computerScore;
+      outputDiv.textContent = `You Lose this round! ${computerSelection} beats ${playerSelection}.`;
+  } else if (winner === 'nobody') {
+      outputDiv.textContent = `You Drew this round! ${playerSelection} does not beat ${computerSelection}.`;
+  } else {
+      outputDiv.textContent = "choose proper option between rock, paper and scissor";
+    }
+}
+
 function playRound(playerSelection, computerSelection) {
   let winner = '';
   
@@ -52,39 +72,12 @@ function playRound(playerSelection, computerSelection) {
 
   /* output */
 
-  
-  if (winner === 'player') {
-    console.log(`You Won this round! ${playerSelection} beats ${computerSelection}.`);
-  } else if (winner === 'computer') {
-      console.log(`You Lose this round! ${computerSelection} beats ${playerSelection}.`);
-  } else if (winner === 'nobody') {
-      console.log(`You Drew this round! ${playerSelection} does not beat ${computerSelection}.`);
-  } else {
-      console.log("choose proper option between rock, paper and scissor");
-    }
-  
-  return winner;
-}
-
-function game(MAX_ROUND_NUMBER) {
-  for (let i = 0; i < MAX_ROUND_NUMBER; i++) {
-    const playerSelection = prompt("Choose rock/paper/scissor");
-    console.log(`You chose ${playerSelection}`);
-    const computerSelection = getComputerChoice();
-    console.log(`Computer chose ${computerSelection}`);
-
-    let roundWinner = playRound(playerSelection, computerSelection);
-    if (roundWinner === 'player') {
-      score++;
-    }
-  }
-
-  console.log(`Your score is: ${score}`);
-
+  outputVisual(winner,playerSelection, computerSelection);
 }
 
 
-let score = 0;
-const MAX_ROUND_NUMBER = 5;
+let playerScore = 0;
+let computerScore = 0;
 
-game(MAX_ROUND_NUMBER);
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', () => playRound(button.id, getComputerChoice())));
